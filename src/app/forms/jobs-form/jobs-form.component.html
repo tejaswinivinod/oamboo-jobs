@@ -1,0 +1,326 @@
+<div class="container px-3 mt-3">
+	<div class="row">
+		<div class="col-9 m-auto">
+            <form #CreateProfile="ngForm">
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Create Your Job Profile</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="fo_job_pic">
+                                    <img src="../../../assets/images/avtar.png" class="avtar">
+                                    <div class="fo_upload_pic" data-toggle="modal" data-target="#ProfilePic"><i class="fa fa-camera"></i> Upload Picture</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 form-group">
+                                        <label>Profile Title</label>
+                                        <input type="text" class="form-control form-control-sm" required #profiletile="ngModel" [class.is-invalid]="profiletile.invalid && profiletile.touched" ngModel name="profile_title" placeholder="Enter Title For Your Profile">
+                                        <small class="text-danger" [class.d-none]="profiletile.valid || profiletile.untouched">Enter Profile Title</small>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Job Type</label>
+                                        <select name="job_type" class="form-control form-control-sm" (blur)="jobTypeValid(jobtype.value)" (change)="jobTypeValid(jobtype.value)" #jobtype="ngModel" [class.is-invalid]="jotypeError && jobtype.touched" ngModel>
+                                            <option value="default">Selete Type</option>
+                                            <option *ngFor="let jobtype of jobtypelist" value="{{jobtype}}">{{jobtype}}</option>
+                                        </select>
+                                        <small class="text-danger" [class.d-none]="!jotypeError || jobtype.untouched">Select Job Type</small>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Job Role</label>
+                                        <select name="job_role" class="form-control form-control-sm single" required (blur)="jobroleValid(jobrole.value)" (click)="jobroleValid(jobrole.value)" [class.is-invalid]="jobroleError && jobrole.touched" #jobrole="ngModel" ngModel>
+                                            <option value="default">Select Role</option>
+                                            <option value="Web Designer">Web Designer</option>	
+                                            <option value="web developer">Web Developer</option>	
+                                        </select>
+                                        <small class="text-danger" [class.d-none]="!jobroleError || jobrole.untouched">Select Job Role</small>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Experience</label>
+                                        <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                            <option value="default">Selete Type</option>
+                                            <option value="10-15">10 - 15</option>
+                                            <option value="15-20">15 - 20</option>
+                                            <option value="30-40">30 - 40</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label>Annual Salary</label>
+                                        <span class="input-group">
+                                            <input type="text" class="form-control form-control-sm" name="lakhs" placeholder="Lakhs" ngModel required>
+                                            <input type="text" class="form-control form-control-sm" name="thousands" placeholder="Thousands" ngModel required>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <label>Preferred Location</label>
+                                        <select name="pref_location" class="form-control form-control-sm multiple" multiple="multiple" ngModel required>
+                                            <option value="">Select Locations</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="nagole">Nagole</option>
+                                            <option value="Telangana">Telangana</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label>Key Skills</label>
+                                        <select class="form-control form-control-sm multiple" name="key_skills" multiple="multiple" ngModel required>
+                                            <option value="AL">Alabama</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label>Upload Resume</label>
+                                        <input type="file" name="resume" class="form-control-sm w-100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Personal Details</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <label>Fullname</label>
+                                <input type="text" name="fullname" class="form-control form-control-sm" placeholder="Enter Fullname" ngModel required>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Gender</label>
+                                <select name="gender" class="form-control form-control-sm" ngModel required>
+                                    <option value="">Select Gender</option>
+                                    <option value="F">Female</option>
+                                    <option value="M">Male</option>
+                                    <option value="O">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Date Of Birth</label>
+                                <input type="text" name="dob" class="form-control form-control-sm" placeholder="Enter Date of Birth" ngModel required>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Mobile</label>
+                                <input type="text" name="mobileno" class="form-control form-control-sm" placeholder="Enter Mobile No" ngModel required>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Email ID</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Email ID" required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Address</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Address" required>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Home Town / City</label>
+                                <select name="pref_location" class="form-control form-control-sm single" ngModel required>
+                                    <option value="">Select Locations</option>
+                                    <option value="">Hyderabad</option>
+                                    <option value="">Nagole</option>
+                                    <option value="">Telangana</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Pincode</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Pincode" required>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>Marital Status</label>
+                                <select name="pref_location" class="form-control form-control-sm" required>
+                                    <option value="">Select Status</option>
+                                    <option value="">Single / Unmarried</option>
+                                    <option value="">Married</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Employment Details</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Company Name" required>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Designation</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Designation" required>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Joining / Relived</label>
+                                <span class="input-group">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Joining Date">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Relived Date">
+                                </span>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <textarea class="form-control form-control-sm" placeholder="Enter Job Description" rows="5"></textarea>
+                            </div>
+                            <div class="col-lg-3 offset-md-9 text-right">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus fa-fw"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times fa-fw"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Education Details</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Education</label>
+                                <select name="pref_location" class="form-control form-control-sm">
+                                    <option value="">Select Education</option>
+                                    <option value="">SSC</option>
+                                    <option value="">Intermediate</option>
+                                    <option value="">Diploma</option>
+                                    <option value="">Graduation</option>
+                                    <option value="">Post Graduation</option>
+                                    <option value="">PhD / Doctorate</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-5">
+                                <label>School / College / University</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter School / College / University Name">
+                            </div>
+                            <div class="col-auto">
+                                <label>Year</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter Year of Pass Out">
+                            </div>
+                            <div class="col-auto text-right">
+                                <label style="height:20px;width:100%;">&nbsp;</label>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-success btn-sm"><i class="fas fa-plus fa-fw"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times fa-fw"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Payment Details</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-lg-3">
+                                <div class="card">
+                                    <div class="card-header om-card-header"><b>Post Free</b></div>
+                                    <img src="../../../assets/images/banner.jpg" class="card-img-top">
+                                    <div class="card-body p-0">
+                                        <div class="card-price">
+                                            <h1><i class="fas fa-rupee-sign"></i>0</h1>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> 30 Days</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-times fa-fw text-danger"></i> Display on Top</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-times fa-fw text-danger"></i> Premium Batch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center p-2">
+                                        <div class="radio radio-success radio-inline">
+                                            <input type="radio" name="radio1" id="radio1" value="option1" checked>
+                                            <label for="radio1">
+                                                <span class="card-title text-bold px-3">Post Free Ad</span>
+                                                <a class="small" id="premAds" data-container="body" data-toggle="popover"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-3">
+                                <div class="card">
+                                    <div class="card-header om-card-header alert-warning"><b>Week Plan</b></div>
+                                    <img src="../../../assets/images/banner.jpg" class="card-img-top">
+                                    <div class="card-body p-0">
+                                        <div class="card-price">
+                                            <h1><i class="fas fa-rupee-sign"></i>50</h1>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> One Week</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Display on Top</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Premium Batch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center p-2 alert-warning">
+                                        <div class="radio radio-success radio-inline">
+                                            <input type="radio" name="radio1" id="radio2" value="option2">
+                                            <label for="radio2">
+                                                <span class="card-title text-bold px-3">Select Plan</span>
+                                                <a class="small" id="premAds" data-container="body" data-toggle="popover"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-3">
+                                <div class="card">
+                                    <div class="card-header om-card-header alert-primary"><b>Twien Week Plan</b></div>
+                                    <img src="../../../assets/images/banner.jpg" class="card-img-top">
+                                    <div class="card-body p-0">
+                                        <div class="card-price">
+                                            <h1><i class="fas fa-rupee-sign"></i>80</h1>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Two Weeks</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Display on Top</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Premium Batch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center p-2 alert-primary">
+                                        <div class="radio radio-success radio-inline">
+                                            <input type="radio" name="radio1" id="radio3" value="option3">
+                                            <label for="radio3">
+                                                <span class="card-title text-bold px-3">Select Plan</span>
+                                                <a class="small" id="premAds" data-container="body" data-toggle="popover"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-3">
+                                <div class="card">
+                                    <div class="card-header om-card-header alert-success"><b>Triple Week Plan</b></div>
+                                    <img src="../../../assets/images/banner.jpg" class="card-img-top">
+                                    <div class="card-body p-0">
+                                        <div class="card-price">
+                                            <h1><i class="fas fa-rupee-sign"></i>120</h1>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Three Weeks</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Display on Top</li>
+                                            <li class="list-group-item small p-2"><i class="fas fa-check fa-fw text-success"></i> Premium Batch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-center p-2 alert-success">
+                                        <div class="radio radio-success radio-inline">
+                                            <input type="radio" name="radio1" id="radio4" value="option4">
+                                            <label for="radio4">
+                                                <span class="card-title text-bold px-3">Select Plan</span>
+                                                <a class="small" id="premAds" data-container="body" data-toggle="popover"></a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col text-right">
+                                <label class="small mb-0"><input type="checkbox" name="agree" checked value="i_agree"> I Agree Terms & Conditions</label>
+                            </div>
+                            <div class="col-lg-2 text-right"><button class="btn btn-success btn-sm" name="submit" id="submit">Post Ad Now</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

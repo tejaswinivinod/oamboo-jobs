@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-2">
+            <app-user-side-nav></app-user-side-nav>
+        </div>
+        <div class="col-7">
+            <form>
+                <div class="mobile_listing_li mt-0">
+                    <div class="header pb-2 pl-1">
+                        <a href="" [routerLink]="['/user-inbox']" class="btn btn-success btn-sm mr-1"><i class="fas fa-inbox fa-fw"></i> Inbox</a>
+                        <a href="" [routerLink]="['/user-reply']" class="btn btn-success btn-sm mr-1"><i class="fas fa-paper-plane fa-fw"></i> Sent</a>
+                        <a href="" [routerLink]="['/user-reply']" class="btn btn-danger btn-sm mr-1"><i class="fas fa-trash fa-fw"></i> Trash</a>
+                    </div>
+                    <div class="om-job-details">
+                        <div class="form-group row">
+                            <label class="col-lg-3">Reply to:</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control form-control-sm" name="replayto" placeholder="Hr ID / Address" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3">Reply From:</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control form-control-sm" name="replayto" placeholder="User ID / Address" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3">Message:</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control form-control-sm" name="message" placeholder="Enter Reply Message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row no-gutters">
+                            <div class="col-lg-8 text-left"></div>
+                            <div class="col-lg-4 text-right"><button type="button" name="send" class="btn btn-success btn-sm"><i class="fas fa-paper-plane fa-fw"></i> Send</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3">
+            <app-user-right-col></app-user-right-col>
+        </div>
+    </div>
+</div>

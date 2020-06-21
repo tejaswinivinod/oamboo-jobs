@@ -1,0 +1,48 @@
+<div class="my-3">
+    <div class="card w-50 m-auto">
+        <div class="card-header p-2">
+            <b>Login / Signup</b>
+        </div>
+        <div class="card-body p-2">
+            <form action="">
+                <div class="row">
+                    <div class="col-5 pr-2">
+                        <div class="oc_login_left">
+                            <div class="oc_login_round text-center"><i class="fa fa-lock fa-3x"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-7 pl-2">
+                        <div class="p-0">
+                            <span class="input-group input-group-sm form-group">
+                                <span class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user fa-fw"></i></span></span>
+                                <input class="form-control" type="text" placeholder="Enter Username/Email Id">
+                            </span>
+                            <span class="input-group input-group-sm form-group">
+                                <span class="input-group-prepend"><span class="input-group-text"><i class="fas fa-key fa-fw"></i></span></span>
+                                <input class="form-control" type="text" placeholder="Enter Password">
+                            </span>
+                            <div class="w-100"></div>
+                            <div class="row">
+                                <div class="col-7"><a href="" class="btn btn-link btn-sm">Forget Password</a></div>
+                                <div class="col-5 text-right"><button type="button" [routerLink]="['/userpanel']" onclick="$('#LoginSign').modal('hide')" class="btn btn-success btn-sm">Sign In</button></div>
+                                <div class="w-100 small text-center my-3">- OR -</div>
+                                <div class="col-6 text-left"><button type="button" class="btn btn-danger btn-sm"><i class="fab fa-google fa-fw"></i> Google</button></div>
+                                <div class="col-6 text-right"><button type="button" class="btn btn-primary btn-sm"><i class="fab fa-facebook fa-fw"></i> Facebook</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer p-2">
+            <div class="row om-login-footer" style="left:15px;">
+                <h5 class="font-weight-normal w-100">One account is all your need</h5>
+                <p class="small w-100">With a single Email ID and password you can use all Oamboo features.</p>
+                <div class="w-100 mt-3"></div>
+                <div class="col-4 small"><div class="oc_step_round"><i class="fas fa-newspaper fa-fw"></i></div> <span>Post Ad</span></div>
+                <div class="col-4 small"><div class="oc_step_round"><i class="fas fa-share-alt fa-fw"></i></div> <span>Share IT</span></div>
+                <div class="col-4 small"><div class="oc_step_round"><i class="fas fa-tags fa-fw"></i></div> <span>Sell IT</span></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="modal fade" id="LoginSign" tabindex="-1" role="dialog" aria-labelledby="LoginSignLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header p-2">
+				<h6 class="modal-title" id="LoginSignLabel">Login / Signup</h6>
+				<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body p-2">
+				<form action="">
+					<div class="row">
+						<div class="col-5 pr-2">
+							<div class="oc_login_left">
+								<div class="oc_login_round text-center"><i class="fa fa-lock fa-3x"></i></div>
+							</div>
+						</div>
+						<div class="col-7 pl-2">
+							<div class="p-0">
+								<span class="input-group input-group-sm form-group">
+									<span class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user fa-fw"></i></span></span>
+									<input class="form-control" type="text" placeholder="Enter Username/Email Id">
+								</span>
+								<span class="input-group input-group-sm form-group">
+									<span class="input-group-prepend"><span class="input-group-text"><i class="fas fa-key fa-fw"></i></span></span>
+									<input class="form-control" type="text" placeholder="Enter Password">
+								</span>
+								<div class="w-100"></div>
+								<div class="row">
+									<div class="col-7"><a href="" class="btn btn-link btn-sm">Forget Password</a></div>
+									<div class="col-5 text-right"><button type="button" [routerLink]="['/user-home']" onclick="$('#LoginSign').modal('hide')" class="btn btn-success btn-sm">Sign In</button></div>
+									<div class="w-100 small text-center my-3">- OR -</div>
+									<div class="col-6 text-left"><button type="button" class="btn btn-danger btn-sm"><i class="fab fa-google fa-fw"></i> Google</button></div>
+									<div class="col-6 text-right"><button type="button" class="btn btn-primary btn-sm"><i class="fab fa-facebook fa-fw"></i> Facebook</button></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer p-2">
+				<div class="row om-login-footer">
+					<h5 class="font-weight-normal m-auto">One account is all your need</h5>
+					<p class="small m-auto">With a single Email ID and password you can use all Oamboo features.</p>
+					<div class="w-100 mt-3"></div>
+					<div class="col-4 small"><div class="oc_step_round"><i class="fas fa-newspaper fa-fw"></i></div> <span>Post Ad</span></div>
+					<div class="col-4 small"><div class="oc_step_round"><i class="fas fa-share-alt fa-fw"></i></div> <span>Share IT</span></div>
+					<div class="col-4 small"><div class="oc_step_round"><i class="fas fa-tags fa-fw"></i></div> <span>Sell IT</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="ProfilePic" class="modal fade in" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<form action="" name="login" id="login" enctype="multipart/form-data">
+				<div class="modal-header p-2">
+					<b>Upload Your Profile</b>
+					<button type="button" class="close" data-dismiss="modal"><i class="fas fa-times small"></i></button>
+				</div>
+				<div class="modal-body p-0 text-center">
+					<div class="oc_login_left rounded-0">
+						<div class="oc_login_round text-center"><i class="fa fa-user fa-3x"></i></div>
+					</div>
+					<input type="file" name="profice_pic" id="profile_pic" class="my-2 form-control-sm">
+				</div>
+				<div class="modal-footer p-2 text-right">
+					<button class="btn btn-primary btn-sm"><i class="fa fa-upload fa-fw"></i> Upload</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<header>
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-2">
+				<a href="/" [routerLink]="['/']" class="logo"><img src="assets/images/logo.png" alt=""></a>
+			</div>
+			<div class="col-7">
+				<form>
+					<div class="input-group">
+						<div class="form-control om-main-search">
+							<span class="dropdown">
+								<span class="dropdown-toggle" data-toggle="dropdown" id="Locationlist" aria-expanded="false">
+									<i class="fas fa-map-marker-alt fa-fw"></i>{{indianCountry.namenpm install ngx-bootstrap --save}} <i class="fas fa-chevron-down fa-fw"></i>
+								</span>
+								<ul class="dropdown-menu" id="Locationlist">
+									<input id="myLocation" type="text" class="om-location-input" placeholder="Search...">
+									<li><a href="#">Hyderabad</a></li>
+									<li><a href="#">Telangana</a></li>
+									<li><a href="#">Andhra Pradesh</a></li>
+								</ul>
+							</span>
+							<input type="text" placeholder="Search in All India" class="om-search-input">
+						</div>	
+						<div class="input-group-btn searhbar">
+							<button class="btn btn-success" type="submit"><i class="fas fa-search fa-fw"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-3 text-right">
+				<div class="post-free-adsec">
+					<a class="btn btn-success mr-2" href="" [routerLink]="['/jobsform']"><i class="fas fa-user-plus fa-fw"></i> Create Profile</a>
+					<button class="btn btn-link text-light btn-sm" data-toggle="modal" data-target="#LoginSign"><i class="fas fa-user-circle fa-fw"></i> Login / Signup</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
