@@ -1,3 +1,36 @@
+<!-- Modal -->
+<div class="modal fade" id="Location" tabindex="-1" role="dialog" aria-labelledby="LocationLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header p-2">
+				<h6 class="modal-title" id="LocationLabel">Select Your Location</h6>
+				<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="jobs_list">
+					<div class="row">
+						<a *ngFor="let designa of designation" [routerLink]="['designa.link']" class="col-3">{{designa.name}}</a>
+						<a [routerLink]="['/joblist']" class="col-3">Front Office Executive</a>
+						<a href="#" class="col-3">Hyderabad</a>
+						<a href="#" class="col-3">Telangana</a>
+						<a href="#" class="col-3">Nagole</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+						<a href="#" class="col-3">State Name</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="LoginSign" tabindex="-1" role="dialog" aria-labelledby="LoginSignLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
