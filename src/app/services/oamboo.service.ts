@@ -20,4 +20,10 @@ export class OambooService {
   getCities(){
     return this.http.get(`${ENV.OAMBOO_API}cities`)
   }
+  getMainCategories(){
+    return this.http.get(`${ENV.OAMBOO_API}mainCategories`)
+  }
+  getSubCategories(){
+    return this.http.get(`${ENV.OAMBOO_API}subCategories`)
+  }
 }

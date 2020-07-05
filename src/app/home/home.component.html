@@ -1,23 +1,50 @@
 <div class="container-fluid px-3 mt-3">
-	<div class="row">
-		<div class="col-4">
+    <div class="row">
+        <div class="col-4">
             <div class="main_categery">
                 <div class="row" style="background-color:#fff;">
                     <div class="w-100 text-center border-bottom box-header"><b>Advance Search</b></div>
-                    <form [formGroup]="stateForm" class="w-100 mb-0">
+                    <form  class="w-100 mb-0">
                         <div class="row p-3">
+                            <!-- <div class="form-group">
+                                <div class="form-group">
+                                    <label class="control-label" for="Country">Country:</label>
+                                    <select *ngIf="getCountries()" [(ngModel)]="selectedCountry"
+                                        (change)="onSelectCountry($event.target.value)" class="form-control input-lg"
+                                        id="country">
+                                        <option value="0">Select Country</option>
+                                        <option *ngFor="let country of getCountries()" value={{country.id}}>
+                                            {{country.name}}</option>
+                                    </select>
+                                </div>
+                                <label class="control-label" for="States">States:</label>
+                                <select *ngIf="states" [(ngModel)]="selectedState"
+                                    (change)="onSelectState($event.target.value)" class="form-control input-lg"
+                                    id="state">
+                                    <option value="0">Select State</option>
+                                    <option *ngFor="let state of states" value={{state.id}}>{{state.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label" for="City">City:</label>
+                                <select class="form-control input-lg" id="city">
+                                    <option *ngIf="!selectedState" value="0">Select City</option>
+                                    <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
+                                </select>
+                            </div> -->
                             <div class="col-lg-6 form-group">
-                                <select name="state" class="form-control form-control-sm">
-                                    <option value="">Select State</option>
-                                    <option value="Telangana">Telangana</option>
-                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <select name="state" class="form-control form-control-sm" *ngIf="states"
+                                    [(ngModel)]="selectedCountry" (change)="onSelectState($event.target.value)">
+                                    <option value="0">Select State</option>
+                                    <option *ngFor="let state of states" value={{state.id}}>
+                                        {{state.name}}</option>
                                 </select>
                             </div>
                             <div class="col-lg-6 form-group">
-                                <select name="jobtype" class="form-control form-control-sm">
-                                    <option value="">Select Type</option>
-                                    <option value="Full Time">Full Time</option>
-                                    <option value="Part Time">Part Time</option>
+                                <select name="city" class="form-control form-control-sm">
+                                    <option *ngIf="!selectedState" value="0">Select City</option>
+                                    <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
                                 </select>
                             </div>
                             <div class="col-lg-6 form-group">
@@ -63,7 +90,8 @@
                     </div>
                 </div>
                 <div class="row mt-3" style="background-color:#fff;">
-                    <div class="w-100 text-center border-bottom box-header mb-1"><b>Part Time / Freelancing Works</b></div>
+                    <div class="w-100 text-center border-bottom box-header mb-1"><b>Part Time / Freelancing Works</b>
+                    </div>
                     <div class="col-lg-6 form-group">
                         <a href="" class="small">IT / Hardware Freelancing</a>
                     </div>
@@ -101,102 +129,143 @@
             <div class="om-post-free-ads-box position-relative mb-3">
                 <div class="row">
                     <div class="w-100 text-center border-bottom box-header"><b>Top Search</b></div>
-                    <div class="col-3 om-sub-menu-box">
+                    <div class="col-3 om-sub-menu-box" *ngFor="let subCategory of subCategories | slice:0:16">
+                        <a [routerLink]="['/jobs']" class="row no-gutters">
+                            <div class="col-3"><img [src]="subCategory?.icon"></div>
+                            <div class="col-9">
+                                <p>{{subCategory?.category_sub}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/front_office_excu.png"></div>
-                            <div class="col-9"><p>Front Office Executive</p></div>
+                            <div class="col-9">
+                                <p>Front Office Executive</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/insurance_financial_serivices.png"></div>
-                            <div class="col-9"><p>Banking / Financial</p></div>
+                            <div class="col-3"><img src="../../assets/images/icon/insurance_financial_serivices.png">
+                            </div>
+                            <div class="col-9">
+                                <p>Banking / Financial</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/hr_admin.png"></div>
-                            <div class="col-9"><p>HR / Admin</p></div>
+                            <div class="col-9">
+                                <p>HR / Admin</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/sales.png"></div>
-                            <div class="col-9"><p>Marketing</p></div>
+                            <div class="col-9">
+                                <p>Marketing</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/sales.png"></div>
-                            <div class="col-9"><p>Sales</p></div>
+                            <div class="col-9">
+                                <p>Sales</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/webdesigner.png"></div>
-                            <div class="col-9"><p>Web Designer / Developer</p></div>
+                            <div class="col-9">
+                                <p>Web Designer / Developer</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/computer_services.png"></div>
-                            <div class="col-9"><p>Hardware & Networking</p></div>
+                            <div class="col-9">
+                                <p>Hardware & Networking</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/teachers.png"></div>
-                            <div class="col-9"><p>Teachers</p></div>
+                            <div class="col-9">
+                                <p>Teachers</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/engineering.png"></div>
-                            <div class="col-9"><p>Engineering</p></div>
+                            <div class="col-9">
+                                <p>Engineering</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/doctors.png"></div>
-                            <div class="col-9"><p>Doctor</p></div>
+                            <div class="col-9">
+                                <p>Doctor</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/deliveery_collection.png"></div>
-                            <div class="col-9"><p>Delivery / Collection</p></div>
+                            <div class="col-9">
+                                <p>Delivery / Collection</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/telecaller.png"></div>
-                            <div class="col-9"><p>Telecallers</p></div>
+                            <div class="col-9">
+                                <p>Telecallers</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/back_office_data.png"></div>
-                            <div class="col-9"><p>Back Office / Data Entry</p></div>
+                            <div class="col-9">
+                                <p>Back Office / Data Entry</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/chef.png"></div>
-                            <div class="col-9"><p>Chef</p></div>
+                            <div class="col-9">
+                                <p>Chef</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/health_beauty_pro.png"></div>
-                            <div class="col-9"><p>Beautician</p></div>
+                            <div class="col-9">
+                                <p>Beautician</p>
+                            </div>
                         </a>
                     </div>
                     <div class="col-3 om-sub-menu-box">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
                             <div class="col-3"><img src="../../assets/images/icon/doctors.png"></div>
-                            <div class="col-9"><p>Nurse</p></div>
+                            <div class="col-9">
+                                <p>Nurse</p>
+                            </div>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="om-post-free-ads-box position-relative">
@@ -205,8 +274,9 @@
                     <div class="col">
                         <div class="jobs_list">
                             <div class="row">
-                                <a *ngFor="let designa of designation" [routerLink]="['designa.link']" class="col-3">{{designa.name}}</a>
-                                <a [routerLink]="['/joblist']" class="col-3">Front Office Executive</a>
+                                <a  *ngFor="let subCategory of subCategories" [routerLink]="['/jobs']"
+                                    class="col-3">{{subCategory?.category_sub}}</a>
+                                <!-- <a [routerLink]="['/joblist']" class="col-3">Front Office Executive</a>
                                 <a href="#" class="col-3">Banking / Finance</a>
                                 <a href="#" class="col-3">HR / Admin</a>
                                 <a href="#" class="col-3">Marketing</a>
@@ -301,12 +371,12 @@
                                 <a href="#" class="col-3">Waiter / Bearer</a>
                                 <a href="#" class="col-3">Welder</a>
                                 <a href="#" class="col-3">Lineman</a>
-                                <a href="#" class="col-3">Freelancer Works</a>
+                                <a href="#" class="col-3">Freelancer Works</a> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
