@@ -6,39 +6,11 @@
                     <div class="w-100 text-center border-bottom box-header"><b>Advance Search</b></div>
                     <form  class="w-100 mb-0">
                         <div class="row p-3">
-                            <!-- <div class="form-group">
-                                <div class="form-group">
-                                    <label class="control-label" for="Country">Country:</label>
-                                    <select *ngIf="getCountries()" [(ngModel)]="selectedCountry"
-                                        (change)="onSelectCountry($event.target.value)" class="form-control input-lg"
-                                        id="country">
-                                        <option value="0">Select Country</option>
-                                        <option *ngFor="let country of getCountries()" value={{country.id}}>
-                                            {{country.name}}</option>
-                                    </select>
-                                </div>
-                                <label class="control-label" for="States">States:</label>
-                                <select *ngIf="states" [(ngModel)]="selectedState"
-                                    (change)="onSelectState($event.target.value)" class="form-control input-lg"
-                                    id="state">
-                                    <option value="0">Select State</option>
-                                    <option *ngFor="let state of states" value={{state.id}}>{{state.name}}</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label" for="City">City:</label>
-                                <select class="form-control input-lg" id="city">
-                                    <option *ngIf="!selectedState" value="0">Select City</option>
-                                    <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
-                                </select>
-                            </div> -->
                             <div class="col-lg-6 form-group">
                                 <select name="state" class="form-control form-control-sm" *ngIf="states"
                                     [(ngModel)]="selectedCountry" (change)="onSelectState($event.target.value)">
                                     <option value="0">Select State</option>
-                                    <option *ngFor="let state of states" value={{state.id}}>
-                                        {{state.name}}</option>
+                                    <option *ngFor="let state of states" value={{state.id}}>{{state.name}}</option>
                                 </select>
                             </div>
                             <div class="col-lg-6 form-group">
@@ -131,141 +103,12 @@
                     <div class="w-100 text-center border-bottom box-header"><b>Top Search</b></div>
                     <div class="col-3 om-sub-menu-box" *ngFor="let subCategory of subCategories | slice:0:16">
                         <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img [src]="subCategory?.icon"></div>
+                            <div class="col-3"><img src="../../assets/images/icon/{{subCategory?.icon}}.png"></div>
                             <div class="col-9">
                                 <p>{{subCategory?.category_sub}}</p>
                             </div>
                         </a>
                     </div>
-                    <!-- <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/front_office_excu.png"></div>
-                            <div class="col-9">
-                                <p>Front Office Executive</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/insurance_financial_serivices.png">
-                            </div>
-                            <div class="col-9">
-                                <p>Banking / Financial</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/hr_admin.png"></div>
-                            <div class="col-9">
-                                <p>HR / Admin</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/sales.png"></div>
-                            <div class="col-9">
-                                <p>Marketing</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/sales.png"></div>
-                            <div class="col-9">
-                                <p>Sales</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/webdesigner.png"></div>
-                            <div class="col-9">
-                                <p>Web Designer / Developer</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/computer_services.png"></div>
-                            <div class="col-9">
-                                <p>Hardware & Networking</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/teachers.png"></div>
-                            <div class="col-9">
-                                <p>Teachers</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/engineering.png"></div>
-                            <div class="col-9">
-                                <p>Engineering</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/doctors.png"></div>
-                            <div class="col-9">
-                                <p>Doctor</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/deliveery_collection.png"></div>
-                            <div class="col-9">
-                                <p>Delivery / Collection</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/telecaller.png"></div>
-                            <div class="col-9">
-                                <p>Telecallers</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/back_office_data.png"></div>
-                            <div class="col-9">
-                                <p>Back Office / Data Entry</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/chef.png"></div>
-                            <div class="col-9">
-                                <p>Chef</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/health_beauty_pro.png"></div>
-                            <div class="col-9">
-                                <p>Beautician</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-3 om-sub-menu-box">
-                        <a [routerLink]="['/jobs']" class="row no-gutters">
-                            <div class="col-3"><img src="../../assets/images/icon/doctors.png"></div>
-                            <div class="col-9">
-                                <p>Nurse</p>
-                            </div>
-                        </a>
-                    </div> -->
                 </div>
             </div>
             <div class="om-post-free-ads-box position-relative">
@@ -274,104 +117,7 @@
                     <div class="col">
                         <div class="jobs_list">
                             <div class="row">
-                                <a  *ngFor="let subCategory of subCategories" [routerLink]="['/jobs']"
-                                    class="col-3">{{subCategory?.category_sub}}</a>
-                                <!-- <a [routerLink]="['/joblist']" class="col-3">Front Office Executive</a>
-                                <a href="#" class="col-3">Banking / Finance</a>
-                                <a href="#" class="col-3">HR / Admin</a>
-                                <a href="#" class="col-3">Marketing</a>
-                                <a href="#" class="col-3">Sales</a>
-                                <a href="#" class="col-3">Web Designer / Developer</a>
-                                <a href="#" class="col-3">Hardware &amp; Networking</a>
-                                <a href="#" class="col-3">Teachers</a>
-                                <a href="#" class="col-3">Engineering</a>
-                                <a href="#" class="col-3">Doctor</a>
-                                <a href="#" class="col-3">Delivery / Collection Excutive</a>
-                                <a href="#" class="col-3">Telecallers</a>
-                                <a href="#" class="col-3">Back Office / Data Entry</a>
-                                <a href="#" class="col-3">Chef</a>
-                                <a href="#" class="col-3">Beautician</a>
-                                <a href="#" class="col-3">Nurse</a>
-                                <a href="#" class="col-3">Helper / Office Assistant</a>
-                                <a href="#" class="col-3">Accountant</a>
-                                <a href="#" class="col-3">Work From Home</a>
-                                <a href="#" class="col-3">Drivers</a>
-                                <a href="#" class="col-3">Animation</a>
-                                <a href="#" class="col-3">Architect</a>
-                                <a href="#" class="col-3">Bartender</a>
-                                <a href="#" class="col-3">Bouncer</a>
-                                <a href="#" class="col-3">Business Analyst</a>
-                                <a href="#" class="col-3">Cameraman</a>
-                                <a href="#" class="col-3">Caretaker</a>
-                                <a href="#" class="col-3">Carpenter</a>
-                                <a href="#" class="col-3">Cleaner</a>
-                                <a href="#" class="col-3">Construction Laborer</a>
-                                <a href="#" class="col-3">Content Writer</a>
-                                <a href="#" class="col-3">Control Room Operator</a>
-                                <a href="#" class="col-3">Counsellor</a>
-                                <a href="#" class="col-3">Survey Executive</a>
-                                <a href="#" class="col-3">Data Analyst</a>
-                                <a href="#" class="col-3">Linux Administrator</a>
-                                <a href="#" class="col-3">Graphic Designer</a>
-                                <a href="#" class="col-3">DTP Operator</a>
-                                <a href="#" class="col-3">Dubbing Artist</a>
-                                <a href="#" class="col-3">Editor</a>
-                                <a href="#" class="col-3">Electrician</a>
-                                <a href="#" class="col-3">Engineer</a>
-                                <a href="#" class="col-3">Event Planner</a>
-                                <a href="#" class="col-3">Financial Advisor</a>
-                                <a href="#" class="col-3">Fire Fighter</a>
-                                <a href="#" class="col-3">Fitters</a>
-                                <a href="#" class="col-3">Floor Manager</a>
-                                <a href="#" class="col-3">Gardeners</a>
-                                <a href="#" class="col-3">Host / Anchor</a>
-                                <a href="#" class="col-3">House Keeping</a>
-                                <a href="#" class="col-3">Insurance Consultant</a>
-                                <a href="#" class="col-3">IT Software Developer</a>
-                                <a href="#" class="col-3">IT Software - Test Engineer</a>
-                                <a href="#" class="col-3">Lab Assistant</a>
-                                <a href="#" class="col-3">Language Translator</a>
-                                <a href="#" class="col-3">Lawyer</a>
-                                <a href="#" class="col-3">Librarian</a>
-                                <a href="#" class="col-3">Security Guard</a>
-                                <a href="#" class="col-3">Lighting Technician</a>
-                                <a href="#" class="col-3">Market Research Analyst</a>
-                                <a href="#" class="col-3">Mechanic</a>
-                                <a href="#" class="col-3">Medical Assistant</a>
-                                <a href="#" class="col-3">Microbiologist</a>
-                                <a href="#" class="col-3">Moulder</a>
-                                <a href="#" class="col-3">Dietician / Nutritionist</a>
-                                <a href="#" class="col-3">Movie Operator</a>
-                                <a href="#" class="col-3">Project Manager</a>
-                                <a href="#" class="col-3">Team Leader</a>
-                                <a href="#" class="col-3">Packager</a>
-                                <a href="#" class="col-3">Painter</a>
-                                <a href="#" class="col-3">Photographer</a>
-                                <a href="#" class="col-3">Pharmacist</a>
-                                <a href="#" class="col-3">Pest Control Executive</a>
-                                <a href="#" class="col-3">Plumber</a>
-                                <a href="#" class="col-3">Product Manager</a>
-                                <a href="#" class="col-3">Programmer</a>
-                                <a href="#" class="col-3">Public Relation Officer</a>
-                                <a href="#" class="col-3">Purchase Executive</a>
-                                <a href="#" class="col-3">Quality Check / Inspector</a>
-                                <a href="#" class="col-3">Reporter</a>
-                                <a href="#" class="col-3">Safety Officer</a>
-                                <a href="#" class="col-3">SAP Consultant</a>
-                                <a href="#" class="col-3">Oracle Consultant</a>
-                                <a href="#" class="col-3">Metal Workers</a>
-                                <a href="#" class="col-3">Software Architect</a>
-                                <a href="#" class="col-3">Soldering Operator</a>
-                                <a href="#" class="col-3">Sound Engineer</a>
-                                <a href="#" class="col-3">Sports Trainer</a>
-                                <a href="#" class="col-3">Ticketing Executive</a>
-                                <a href="#" class="col-3">Tailor</a>
-                                <a href="#" class="col-3">Trainer</a>
-                                <a href="#" class="col-3">Video Grapher</a>
-                                <a href="#" class="col-3">Waiter / Bearer</a>
-                                <a href="#" class="col-3">Welder</a>
-                                <a href="#" class="col-3">Lineman</a>
-                                <a href="#" class="col-3">Freelancer Works</a> -->
+                                <a *ngFor="let subCategory of subCategories" [routerLink]="['/jobs']" class="col-3">{{subCategory?.category_sub}}</a>
                             </div>
                         </div>
                     </div>

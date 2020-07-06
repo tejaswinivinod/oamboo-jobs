@@ -1,0 +1,139 @@
+<div class="container px-3 mt-3">
+	<div class="row">
+		<div class="col-9 m-auto">
+            <div class="w-100 form-group">
+                <a class="btn btn-outline-success btn-sm" href="#" [routerLink]="['/hr']"><i class="fas fa-arrow-left fa-fw"></i> Back</a>
+            </div>
+            <form #CreateProfile="ngForm">
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Post Job</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 form-group">
+                                        <label>Job Title</label>
+                                        <input type="text" class="form-control form-control-sm" required #profiletile="ngModel" [class.is-invalid]="profiletile.invalid && profiletile.touched" ngModel name="profile_title" placeholder="Enter Title For Your Profile">
+                                        <small class="text-danger" [class.d-none]="profiletile.valid || profiletile.untouched">Enter Profile Title</small>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Job Type</label>
+                                        <select name="job_type" class="form-control form-control-sm" (blur)="jobTypeValid(jobtype.value)" (change)="jobTypeValid(jobtype.value)" #jobtype="ngModel" [class.is-invalid]="jotypeError && jobtype.touched" ngModel>
+                                            <option value="default">Selete Type</option>
+                                            <option *ngFor="let jobtype of jobtypelist" value="{{jobtype}}">{{jobtype}}</option>
+                                        </select>
+                                        <small class="text-danger" [class.d-none]="!jotypeError || jobtype.untouched">Select Job Type</small>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Job Role</label>
+                                        <select name="job_role" class="form-control form-control-sm single" required (blur)="jobroleValid(jobrole.value)" (click)="jobroleValid(jobrole.value)" [class.is-invalid]="jobroleError && jobrole.touched" #jobrole="ngModel" ngModel>
+                                            <option value="default">Select Role</option>
+                                            <option value="Web Designer">Web Designer</option>	
+                                            <option value="web developer">Web Developer</option>	
+                                        </select>
+                                        <small class="text-danger" [class.d-none]="!jobroleError || jobrole.untouched">Select Job Role</small>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Vacancies</label>
+                                        <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Number of Vacancies" ngModel required>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Closing Date</label>
+                                        <input type="date" class="form-control form-control-sm" name="thousands" placeholder="Select Closing Date" ngModel required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label>Min Salary</label>
+                                        <span class="input-group">
+                                            <input type="number" class="form-control form-control-sm" name="lakhs" placeholder="Lakhs" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Thousands" ngModel required>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Max Salary</label>
+                                        <span class="input-group">
+                                            <input type="number" class="form-control form-control-sm" name="lakhs" placeholder="Lakhs" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Thousands" ngModel required>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Experience</label>
+                                        <span class="input-group">
+                                            <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                                <option value="default">Selete Type</option>
+                                                <option value="10-15">0</option>
+                                                <option value="10-15">1</option>
+                                                <option value="15-20">2</option>
+                                                <option value="30-40">3</option>
+                                            </select>
+                                            <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                                <option value="default">Selete Type</option>
+                                                <option value="10-15">1</option>
+                                                <option value="15-20">2</option>
+                                                <option value="30-40">3</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Required Status</label>
+                                        <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                            <option value="default">Selete Status</option>
+                                            <option value="10-15">Urgent</option>
+                                            <option value="10-15">Immedate</option>
+                                            <option value="15-20">Regular</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-4">
+                                        <label>Education</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Education</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Opening Location</label>
+                                        <select name="pref_location" class="form-control form-control-sm multiple" multiple="multiple" ngModel required>
+                                            <option value="">Select Locations</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="nagole">Nagole</option>
+                                            <option value="Telangana">Telangana</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label>Key Skills</label>
+                                        <select class="form-control form-control-sm multiple" name="key_skills" multiple="multiple" ngModel required>
+                                            <option value="AL">Alabama</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Job Description</b></div>
+                    <div class="card-body">
+                        <textarea class="form-control form-control-sm" rows="10" placeholder="Enter Job Description Here"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col text-right">
+                                <label class="small mb-0"><input type="checkbox" name="agree" checked value="i_agree"> I Agree Terms & Conditions</label>
+                            </div>
+                            <div class="col-lg-2 text-right"><button class="btn btn-success btn-sm" name="submit" id="submit">Post Job</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,134 @@
-<p>hr-settings works!</p>
+<div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col-2">
+        <app-hr-side-nav></app-hr-side-nav>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link btn-sm active" id="v-pills-personal-tab" data-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">Personal Settings</a>
+              <a class="nav-link btn-sm" id="v-pills-Notifications-tab" data-toggle="pill" href="#v-pills-Notifications" role="tab" aria-controls="v-pills-Notifications" aria-selected="false">Notifications</a>
+              <a class="nav-link btn-sm" id="v-pills-search-pre-tab" data-toggle="pill" href="#v-pills-search-pre" role="tab" aria-controls="v-pills-search-pre" aria-selected="false">Search Preferences</a>
+              <a class="nav-link btn-sm" id="v-pills-Deactive-tab" data-toggle="pill" href="#v-pills-Deactive" role="tab" aria-controls="v-pills-Deactive" aria-selected="false">Deactive Profile</a>
+              <a class="nav-link btn-sm" id="v-pills-Delete-tab" data-toggle="pill" href="#v-pills-Delete" role="tab" aria-controls="v-pills-Delete" aria-selected="false">Delete Account</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                <form>
+                  <div class="card">
+                    <div class="card-header p-2"><b><i class="fas fa-key fa-fw"></i> Change Password</b></div>
+                    <div class="card-body p-2">
+                      <div class="form-group row">
+                        <label class="col-lg-4">Old Password:</label>
+                        <div class="col-lg-8">
+                          <input type="text" name="oldpassword" class="form-control form-control-sm" placeholder="Enter Old Password">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-lg-4">New Password:</label>
+                        <div class="col-lg-8">
+                          <input type="text" name="newpassword" class="form-control form-control-sm" placeholder="Enter New Password">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-lg-4">Conform Password:</label>
+                        <div class="col-lg-8">
+                          <input type="text" name="conformpassword" class="form-control form-control-sm" placeholder="Enter Conform Password">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer p-2 text-right"><button type="button" class="btn btn-success btn-sm" name="change">Change</button></div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Notifications" role="tabpanel" aria-labelledby="v-pills-Notifications-tab">
+                <form>
+                  <div class="card">
+                    <div class="card-header p-2"><b><i class="fas fa-bell fa-fw"></i> Notifications</b></div>
+                    <div class="card-body p-2">
+                      <div class="form-group row">
+                        <label class="col-lg-4">Select Job Role</label>
+                        <div class="col-lg-8">
+                          <select name="job-role" class="form-control form-control-sm">
+                            <option value="defualt">Select Role</option>
+                            <option value="web-designing">Web Designing</option>
+                            <option value="web-development">Web Development</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-lg-4">Enable Jobs Notifications</label>
+                        <div class="col-lg-8">
+                          <input type="checkbox" name="job-notification">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer p-2 text-right"><button type="button" class="btn btn-success btn-sm" name="change">Submit</button></div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="v-pills-search-pre" role="tabpanel" aria-labelledby="v-pills-search-pre-tab">
+              <form>
+                <div class="card">
+                  <div class="card-header p-2"><b><i class="fas fa-search fa-fw"></i> Search Preferences</b></div>
+                  <div class="card-body p-2">
+                    <div class="form-group row">
+                      <label class="col-lg-4">Hide Profile in Company</label>
+                      <div class="col-lg-8">
+                        <select name="pref_location" class="form-control form-control-sm multiple" multiple="multiple" style="width:100%;">
+                          <option value="">Select Company</option>
+                          <option value="1">OAMBOO Soft Solutions Pvt. Ltd.</option>
+                          <option value="2">IBM</option>
+                          <option value="3">Dell</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer p-2 text-right"><button type="button" class="btn btn-success btn-sm" name="change">Submit</button></div>
+                </div>
+              </form>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Deactive" role="tabpanel" aria-labelledby="v-pills-Deactive-tab">
+              <form>
+                <div class="card">
+                  <div class="card-header p-2"><b><i class="fas fa-ban fa-fw"></i> Deactive Profile</b></div>
+                  <div class="card-body p-2">
+                    <div class="form-group row">
+                      <label class="col-lg-2"><input type="checkbox" name="profile-deactive"></label>
+                      <div class="col-lg-10">
+                        UI UX Developer - Profile
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer p-2 text-right"><button type="button" class="btn btn-success btn-sm" name="change">Submit</button></div>
+                </div>
+              </form>
+              </div>
+              <div class="tab-pane fade" id="v-pills-Delete" role="tabpanel" aria-labelledby="v-pills-Delete-tab">
+                <form>
+                  <div class="card">
+                    <div class="card-header p-2"><b><i class="fas fa-trash fa-fw"></i> Delete Account</b></div>
+                    <div class="card-body p-2">
+                      <div class="form-group row">
+                        <label class="col-lg-5">Enter Your Password to Delete Account</label>
+                        <div class="col-lg-7">
+                          <input type="text" name="Password" class="form-control form-control-sm" placeholder="Enter Password to Delete">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer p-2 text-right"><button type="button" class="btn btn-success btn-sm" name="change">Delete</button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        
+      </div>
+    </div>
+  </div>

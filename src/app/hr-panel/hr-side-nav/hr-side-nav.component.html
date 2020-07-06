@@ -1,1 +1,17 @@
-<p>hr-side-nav works!</p>
+<div class="om-left-panel" style="position:sticky;top:5px">
+    <img src="../assets/images/avtar.png" width="100%" class="img-thumbnail">
+    <div class="om-upload-pic" data-toggle="tooltip" data-placement="left" title="Change Profile Pic">
+        <div data-toggle="modal" data-target="#ProfilePic"><i class="fas fa-camera fa-fw"></i></div>
+    </div>
+    <div class="w-100"></div>
+    <div class="list-group om-list-group">
+        <div class="list-group-item"><b>K V Vamshi Das</b></div>
+        <a href="" [routerLink]="['/hr']" class="list-group-item"><i class="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
+        <a href="" [routerLink]="['/hr-post-jobs']" class="list-group-item"><i class="fas fa-briefcase fa-fw"></i> Post Jobs</a>
+        <a href="" [routerLink]="['/hr-applications']" class="list-group-item"><i class="fas fa-file fa-fw"></i> Applications</a>
+        <a href="" [routerLink]="['/hr-profile']" class="list-group-item"><i class="fas fa-user fa-fw"></i> My Profile</a>
+        <a href="" [routerLink]="['/hr-inbox']" class="list-group-item"><i class="fas fa-inbox fa-fw"></i> Inbox</a>
+        <a href="" [routerLink]="['/hr-saved-jobs']" class="list-group-item"><i class="far fa-heart fa-fw"></i> Saved Profiles <span class="badge badge-secondary float-right">0</span></a>
+        <a href="" [routerLink]="['/hr-settings']" class="list-group-item"><i class="fas fa-cogs fa-fw"></i> Settings</a>
+    </div>
+</div>

@@ -14,7 +14,7 @@ import { UserHomeComponent } from './user-panel/user-home/user-home.component';
 import { UserLiveFeedsComponent } from './user-panel/user-live-feeds/user-live-feeds.component';
 import { UserSideNavComponent } from './user-panel/user-side-nav/user-side-nav.component';
 import { UserRightColComponent } from './user-panel/user-right-col/user-right-col.component';
-import { HrDashboardComponent } from './hr-panel/hr-dashboard/hr-dashboard.component';
+import { HrHomeComponent } from './hr-panel/hr-home/hr-home.component';
 import { HrSettingsComponent } from './hr-panel/hr-settings/hr-settings.component';
 import { HrProfileComponent } from './hr-panel/hr-profile/hr-profile.component';
 import { HrSearchComponent } from './hr-panel/hr-search/hr-search.component';
@@ -25,6 +25,7 @@ import { HrSideNavComponent } from './hr-panel/hr-side-nav/hr-side-nav.component
 import { UserReplyComponent } from './user-panel/user-reply/user-reply.component';
 import { UserProfileComponent } from './user-panel/user-profile/user-profile.component';
 import { UserSavedJobsComponent } from './user-panel/user-saved-jobs/user-saved-jobs.component';
+import { HrPostJobsComponent } from './hr-panel/hr-post-jobs/hr-post-jobs.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path:'user-settings', component: UserSettingsComponent},
   {path:'user-side-nave', component: UserSideNavComponent},
   {path:'user-right-nav', component: UserRightColComponent},
-  {path:'hr-dashboard', component: HrDashboardComponent},
+  {path:'hr', component: HrHomeComponent},
   {path:'hr-settings', component: HrSettingsComponent},
   {path:'hr-profile', component: HrProfileComponent},
   {path:'hr-search', component: HrSearchComponent},
@@ -52,6 +53,7 @@ const routes: Routes = [
   {path:'user-reply', component: UserReplyComponent},
   {path:'user-profile', component: UserProfileComponent},
   {path:'user-saved-jobs', component: UserSavedJobsComponent},
+  {path:'hr-post-jobs', component: HrPostJobsComponent},
 ];
 
 @NgModule({
@@ -74,7 +76,7 @@ export const routingComponents = [
   UserLiveFeedsComponent,
   UserSideNavComponent,
   UserRightColComponent,
-  HrDashboardComponent,
+  HrHomeComponent,
   HrSettingsComponent,
   HrProfileComponent,
   HrSearchComponent,
@@ -84,5 +86,6 @@ export const routingComponents = [
   HrSideNavComponent,
   UserReplyComponent,
   UserProfileComponent,
-  UserSavedJobsComponent
+  UserSavedJobsComponent,
+  HrPostJobsComponent
 ]
