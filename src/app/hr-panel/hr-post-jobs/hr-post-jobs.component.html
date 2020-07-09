@@ -35,39 +35,39 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Vacancies</label>
-                                        <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Number of Vacancies" ngModel required>
+                                        <input type="number" class="form-control form-control-sm" name="no_of_vacancies" placeholder="Number of Vacancies" ngModel required>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Closing Date</label>
-                                        <input type="date" class="form-control form-control-sm" name="thousands" placeholder="Select Closing Date" ngModel required>
+                                        <input type="date" class="form-control form-control-sm" name="closing_date" placeholder="Select Closing Date" ngModel required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-3">
                                         <label>Min Salary</label>
                                         <span class="input-group">
-                                            <input type="number" class="form-control form-control-sm" name="lakhs" placeholder="Lakhs" ngModel required>
-                                            <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Thousands" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="min_lakhs" placeholder="Lakhs" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="min_thousands" placeholder="Thousands" ngModel required>
                                         </span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Max Salary</label>
                                         <span class="input-group">
-                                            <input type="number" class="form-control form-control-sm" name="lakhs" placeholder="Lakhs" ngModel required>
-                                            <input type="number" class="form-control form-control-sm" name="thousands" placeholder="Thousands" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="max_lakhs" placeholder="Lakhs" ngModel required>
+                                            <input type="number" class="form-control form-control-sm" name="max_thousands" placeholder="Thousands" ngModel required>
                                         </span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Experience</label>
                                         <span class="input-group">
-                                            <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                            <select name="from_exp" class="form-control form-control-sm" required #experience="ngModel" ngModel>
                                                 <option value="default">Selete Type</option>
                                                 <option value="10-15">0</option>
                                                 <option value="10-15">1</option>
                                                 <option value="15-20">2</option>
                                                 <option value="30-40">3</option>
                                             </select>
-                                            <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                            <select name="to_exp" class="form-control form-control-sm" required #experience="ngModel" ngModel>
                                                 <option value="default">Selete Type</option>
                                                 <option value="10-15">1</option>
                                                 <option value="15-20">2</option>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Required Status</label>
-                                        <select name="experience" class="form-control form-control-sm" required #experience="ngModel" ngModel>
+                                        <select name="req_status" class="form-control form-control-sm" required #experience="ngModel" ngModel>
                                             <option value="default">Selete Status</option>
                                             <option value="10-15">Urgent</option>
                                             <option value="10-15">Immedate</option>
@@ -88,11 +88,14 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <label>Education</label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Education</label>
+                                        <select name="education" class="form-control form-control-sm multiple" multiple="multiple" ngModel required>
+                                            <option value="">Select Locations</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="nagole">Nagole</option>
+                                            <option value="Telangana">Telangana</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +125,7 @@
                 <div class="card mb-3">
                     <div class="card-header om-card-header"><b>Job Description</b></div>
                     <div class="card-body">
-                        <textarea class="form-control form-control-sm" rows="10" placeholder="Enter Job Description Here"></textarea>
+                        <textarea class="form-control form-control-sm" rows="10" name="description" placeholder="Enter Job Description Here"></textarea>
                     </div>
                     <div class="card-footer">
                         <div class="row">
