@@ -11,5 +11,8 @@ export class HrPostJobsComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit(createProfile){
+    console.log(createProfile);
+    
+  }
 }
