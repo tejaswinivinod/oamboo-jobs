@@ -1,3 +1,4 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
 body{background-color:#dcdcdc;font-family: 'Roboto', sans-serif;color:#525252;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 a{color:#33333b;}
 a:hover{color:#1eb980;text-decoration:none;transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;}

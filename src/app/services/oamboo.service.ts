@@ -26,4 +26,7 @@ export class OambooService {
   getSubCategories(){
     return this.http.get(`${ENV.OAMBOO_API}subCategories`)
   }
+  postJobs(postJobs){
+    return this.http.post(`${ENV.OAMBOO_API}postJobs`,postJobs)
+  }
 }

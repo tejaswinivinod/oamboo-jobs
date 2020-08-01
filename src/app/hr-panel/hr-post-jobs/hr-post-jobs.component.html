@@ -5,7 +5,183 @@
                 <a class="btn btn-outline-success btn-sm" href="#" [routerLink]="['/hr']"><i
                         class="fas fa-arrow-left fa-fw"></i> Back</a>
             </div>
-            <form #createProfile="ngForm" (ngSubmit)="onSubmit(createProfile)" >
+            <form [formGroup]="jobDetailsForm">
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Post Job</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 form-group">
+                                        <label>Job Title</label>
+                                        <input type="text" class="form-control form-control-sm" required
+                                            formControlName="profileTitle" name="profileTitle"
+                                            placeholder="Enter Title For Your Profile">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Job Type</label>
+                                        <select name="jobType" class="form-control form-control-sm"
+                                            formControlName="jobType">
+                                            <option value="default">Select Type</option>
+                                            <option *ngFor="let jobtype of jobtypelist" [value]="jobtype">{{jobtype}}
+                                            </option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Job Role</label>
+                                        <!-- <select name="jobRole" class="form-control form-control-sm" required
+                                            formControlName="jobRole">
+                                            <option value="default">Select Role</option>
+                                            <option *ngFor="let subCategories of subCategories"
+                                                [value]="subCategories?.id">{{subCategories?.category_sub}}
+                                            </option>
+                                        </select> -->
+                                        <input formControlName="jobRole" [typeahead]="subCategories"
+                                        typeaheadOptionField="category_sub" (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                                        (typeaheadOnSelect)="onSelect($event)" class="form-control form-group"
+                                        placeholder="Select your Job Role..." />
+                                      <ul *ngIf="typeaheadNoResults" id="DestSerchList">
+                                        <span class="active">No Results Found</span>
+                                      </ul>
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Vacancies</label>
+                                        <input type="number" class="form-control form-control-sm" name="vacancies"
+                                            placeholder="Number of Vacancies" formControlName="vacancies" required>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Closing Date</label>
+                                        <input type="date" class="form-control form-control-sm" name="closingDate"
+                                            placeholder="Select Closing Date" formControlName="closingDate" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label>Min Salary</label>
+                                        <span class="input-group">
+                                            <input type="number" class="form-control form-control-sm" name="minLakhs"
+                                                placeholder="Lakhs" formControlName="minLakhs" required>
+                                            <input type="number" class="form-control form-control-sm"
+                                                name="minThousands" placeholder="Thousands"
+                                                formControlName="minThousands" required>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Max Salary</label>
+                                        <span class="input-group">
+                                            <input type="number" class="form-control form-control-sm" name="maxLakhs"
+                                                placeholder="Lakhs" formControlName="maxLakhs" required>
+                                            <input type="number" class="form-control form-control-sm"
+                                                name="maxThousands" placeholder="Thousands"
+                                                formControlName="maxThousands" required>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Experience</label>
+                                        <span class="input-group">
+                                            <select name="fromExp" class="form-control form-control-sm" required
+                                                formControlName="fromExp">
+                                                <option value="default">Select Type</option>
+                                                <option *ngFor="let years of years" [value]="years">
+                                                    {{years}}
+                                                </option>
+                                            </select>
+                                            <select name="toExp" class="form-control form-control-sm" required
+                                                formControlName="toExp">
+                                                <option value="default">Select Type</option>
+                                                <option *ngFor="let years of years" [value]="years">
+                                                    {{years}}
+                                                </option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Required Status</label>
+                                        <select name="reqStatus" class="form-control form-control-sm" required
+                                            formControlName="reqStatus">
+                                            <option value="default">Select Status</option>
+                                            <option *ngFor="let requiredStatus of requiredStatus"
+                                                [value]="requiredStatus">{{requiredStatus}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Education</label>
+                                        <!-- <select name="education" class="form-control form-control-sm multiple"
+                                            multiple="multiple" formControlName="education">
+                                            <option value="">Select Locations</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="nagole">Nagole</option>
+                                            <option value="Telangana">Telangana</option>
+                                        </select> -->
+                                        <ng-select [multiple]="true" formControlName="education">
+                                            <ng-option *ngFor="let education of educations" [value]="education">
+                                                {{education}}</ng-option>
+                                        </ng-select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label>Opening Location</label>
+                                        <!-- <select name="prefLocation" class="form-control form-control-sm multiple"
+                                            multiple="multiple" formControlName="prefLocation" required>
+                                            <option value="">Select Locations</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="nagole">Nagole</option>
+                                            <option value="Telangana">Telangana</option>
+                                        </select> -->
+                                        <ng-select [multiple]="true" formControlName="prefLocation">
+                                            <ng-option *ngFor="let location of locations" [value]="location">
+                                                {{location}}</ng-option>
+                                        </ng-select>
+
+                                    </div>
+                                    <div class="col">
+                                        <label>Key Skills</label>
+                                        <!-- <select class="form-control form-control-sm multiple" name="keySkills"
+                                            multiple="multiple" formControlName="keySkills" required>
+                                            <option value="AL">Alabama</option>
+                                            <option value="WY">Wyoming</option>
+                                        </select> -->
+                                        <ng-select [multiple]="true" formControlName="keySkills">
+                                            <ng-option *ngFor="let keySkills of keySkills" [value]="keySkills">
+                                                {{keySkills}}</ng-option>
+                                        </ng-select>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header om-card-header"><b>Job Description</b></div>
+                    <div class="card-body">
+                        <textarea class="form-control form-control-sm" rows="10" name="description"
+                            placeholder="Enter Job Description Here" formControlName="description"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col text-right">
+                                <label class="small mb-0"><input type="checkbox" name="agree" checked value="i_agree"> I
+                                    Agree Terms & Conditions</label>
+                            </div>
+                            <div class="col-lg-2 text-right"><button class="btn btn-success btn-sm" type="button"
+                                    (click)=onSubmit()>Post Job</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- <form #createProfile="ngForm" (ngSubmit)="onSubmit(createProfile)" > 
                 <div class="card mb-3">
                     <div class="card-header om-card-header"><b>Post Job</b></div>
                     <div class="card-body">
@@ -28,7 +204,7 @@
                                             (blur)="jobTypeValid(jobtype.value)" (change)="jobTypeValid(jobtype.value)"
                                             #jobtype="ngModel" [class.is-invalid]="jotypeError && jobtype.touched"
                                             ngModel>
-                                            <option value="default">Selete Type</option>
+                                            <option value="default">Select Type</option>
                                             <option *ngFor="let jobtype of jobtypelist" value="{{jobtype}}">{{jobtype}}
                                             </option>
                                         </select>
@@ -50,74 +226,40 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Vacancies</label>
-<<<<<<< HEAD
-                                        <input type="number" class="form-control form-control-sm" name="thousands"
-                                            placeholder="Number of Vacancies" ngModel required>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label>Closing Date</label>
-                                        <input type="date" class="form-control form-control-sm" name="thousands"
-                                            placeholder="Select Closing Date" ngModel required>
-=======
                                         <input type="number" class="form-control form-control-sm" name="no_of_vacancies" placeholder="Number of Vacancies" ngModel required>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Closing Date</label>
                                         <input type="date" class="form-control form-control-sm" name="closing_date" placeholder="Select Closing Date" ngModel required>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-3">
                                         <label>Min Salary</label>
                                         <span class="input-group">
-<<<<<<< HEAD
-                                            <input type="number" class="form-control form-control-sm" name="lakhs"
-                                                placeholder="Lakhs" ngModel required>
-                                            <input type="number" class="form-control form-control-sm" name="thousands"
-                                                placeholder="Thousands" ngModel required>
-=======
                                             <input type="number" class="form-control form-control-sm" name="min_lakhs" placeholder="Lakhs" ngModel required>
                                             <input type="number" class="form-control form-control-sm" name="min_thousands" placeholder="Thousands" ngModel required>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
                                         </span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Max Salary</label>
                                         <span class="input-group">
-<<<<<<< HEAD
-                                            <input type="number" class="form-control form-control-sm" name="lakhs"
-                                                placeholder="Lakhs" ngModel required>
-                                            <input type="number" class="form-control form-control-sm" name="thousands"
-                                                placeholder="Thousands" ngModel required>
-=======
                                             <input type="number" class="form-control form-control-sm" name="max_lakhs" placeholder="Lakhs" ngModel required>
                                             <input type="number" class="form-control form-control-sm" name="max_thousands" placeholder="Thousands" ngModel required>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
                                         </span>
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Experience</label>
                                         <span class="input-group">
-<<<<<<< HEAD
-                                            <select name="experience" class="form-control form-control-sm" required
-                                                #experience="ngModel" ngModel>
-=======
                                             <select name="from_exp" class="form-control form-control-sm" required #experience="ngModel" ngModel>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
-                                                <option value="default">Selete Type</option>
+                                                <option value="default">Select Type</option>
                                                 <option value="10-15">0</option>
                                                 <option value="10-15">1</option>
                                                 <option value="15-20">2</option>
                                                 <option value="30-40">3</option>
                                             </select>
-<<<<<<< HEAD
-                                            <select name="experience" class="form-control form-control-sm" required
-                                                #experience="ngModel" ngModel>
-=======
                                             <select name="to_exp" class="form-control form-control-sm" required #experience="ngModel" ngModel>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
-                                                <option value="default">Selete Type</option>
+                                                <option value="default">Select Type</option>
                                                 <option value="10-15">1</option>
                                                 <option value="15-20">2</option>
                                                 <option value="30-40">3</option>
@@ -126,13 +268,8 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Required Status</label>
-<<<<<<< HEAD
-                                        <select name="experience" class="form-control form-control-sm" required
-                                            #experience="ngModel" ngModel>
-=======
                                         <select name="req_status" class="form-control form-control-sm" required #experience="ngModel" ngModel>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
-                                            <option value="default">Selete Status</option>
+                                            <option value="default">Select Status</option>
                                             <option value="10-15">Urgent</option>
                                             <option value="10-15">Immedate</option>
                                             <option value="15-20">Regular</option>
@@ -181,12 +318,7 @@
                 <div class="card mb-3">
                     <div class="card-header om-card-header"><b>Job Description</b></div>
                     <div class="card-body">
-<<<<<<< HEAD
-                        <textarea class="form-control form-control-sm" rows="10"
-                            placeholder="Enter Job Description Here"></textarea>
-=======
                         <textarea class="form-control form-control-sm" rows="10" name="description" placeholder="Enter Job Description Here"></textarea>
->>>>>>> 771700202c6540f461bfeead033c55f3b824c624
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -199,7 +331,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form>  -->
         </div>
     </div>
 </div>
